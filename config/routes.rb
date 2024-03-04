@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 Rails.application.routes.draw do
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
@@ -9,8 +11,8 @@ Rails.application.routes.draw do
   resources :movies, only: [:index, :new, :create]
   resources :user_movies, only: [:create, :update]
 
-  get '/login', to: 'sessions#new'
-  delete '/logout', to: 'sessions#destroy'
+  get "/login", to: "sessions#new"
+  delete "/logout", to: "sessions#destroy"
 
-  root 'sessions#new'
+  root "sessions#new"
 end

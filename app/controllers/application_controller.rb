@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   helper_method :current_user, :logged_in?
@@ -15,7 +17,7 @@ class ApplicationController < ActionController::Base
   def authenticate_user!
     unless logged_in?
       flash[:alert] = "You must be logged in to access this page"
-      redirect_to login_path
+      redirect_to(login_path)
     end
   end
 end

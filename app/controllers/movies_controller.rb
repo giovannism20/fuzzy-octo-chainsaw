@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class MoviesController < ApplicationController
   before_action :authenticate_user!
 
@@ -5,7 +7,7 @@ class MoviesController < ApplicationController
     @movies = Movie.all
     respond_to do |format|
       format.html
-      format.json { render json: @movies.to_json(methods: :average_score) }
+      format.json { render(json: @movies.to_json(methods: :average_score)) }
     end
   end
 
@@ -16,9 +18,9 @@ class MoviesController < ApplicationController
   def create
     @movie = Movie.new(movie_params)
     if @movie.save
-      redirect_to movies_path, notice: "Movie was successfully created."
+      redirect_to(movies_path, notice: "Movie was successfully created.")
     else
-      render :new
+      render(:new)
     end
   end
 
