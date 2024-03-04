@@ -61,7 +61,9 @@ group :development do
 
   gem "error_highlight", ">= 0.4.0", platforms: [:ruby]
 
-  gem 'rubocop', '~> 1.61'
+  gem "rubocop", "~> 1.61"
+
+  gem "rubocop-shopify", "~> 2.15", ">= 2.15.1"
 end
 
 group :test do
