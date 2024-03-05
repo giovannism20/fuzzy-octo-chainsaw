@@ -1,18 +1,21 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
-
-  # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
-  # Can be used by load balancers and uptime monitors to verify that the app is live.
-  # get "up" => "rails/health#show", as: :rails_health_check
   resources :users, only: [:new, :create]
   resources :sessions, only: [:new, :create, :destroy]
-  resources :movies, only: [:index, :new, :create]
-  resources :user_movies, only: [:create, :update]
 
   get "/login", to: "sessions#new"
   delete "/logout", to: "sessions#destroy"
 
   root "sessions#new"
+
+  # Movies
+  resources :user_movies, only: [:create, :update]
+  resources :movies, only: [:index, :new, :create]
+
+  # Mass Movies Upload
+  get "movies/mass_movies", to: "mass_movies#upload"
+
+  # Mass Rate Upload
+  get "movies/mass_rate", to: "mass_rate#upload"
 end

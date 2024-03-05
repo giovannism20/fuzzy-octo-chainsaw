@@ -1,15 +1,173 @@
-/*
- * This is a manifest file that'll be compiled into application.css, which will include all the files
- * listed below.
- *
- * Any CSS (and SCSS, if configured) file within this directory, lib/assets/stylesheets, or any plugin's
- * vendor/assets/stylesheets directory can be referenced here using a relative path.
- *
- * You're free to add application-wide styles to this file and they'll appear at the bottom of the
- * compiled file so the styles you add here take precedence over styles defined in any other CSS
- * files in this directory. Styles in this file should be added after the last require_* statement.
- * It is generally better to create a new file per style scope.
- *
- *= require_tree .
- *= require_self
- */
+*{
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    font-family: "Roboto", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+h1{
+    text-transform: capitalize;
+    margin-bottom: 2rem;
+}
+
+a{
+    text-decoration: none;
+    color: black;
+}
+
+:root{
+    --primary: #2D3250;
+    --secondary: #7077A1;
+    --delay: 100
+}
+
+body{
+    background-color: var(--primary);
+    height: 100svh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    color: white;
+    align-items: center;
+    padding-top: 5rem;
+    padding-inline: 1rem;
+}
+
+form.login, form.registerMovie{
+    margin: 0 auto;
+    max-width: 28rem;
+    background-color: var(--secondary);
+    padding: 2rem;
+    width: 100%;
+    border-radius: .2rem;
+}
+
+.container_input{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    margin-block: 2rem;
+}
+.container_input label{
+    margin-bottom: .2rem;
+    font-size: 1.7rem;
+    text-transform: capitalize;
+}
+
+input{
+    margin-top: 1rem;
+    padding: .8rem 1.5rem;
+    border-radius: .2rem;
+    border: 0px;
+    outline: 0px;
+    transition: 500ms;
+}
+
+input:focus{
+    background-color: rgb(244, 243, 243);
+}
+
+input[type=submit], .btn_add_movie{
+    background-color: white;
+    color: black;
+    padding: .8rem 1.5rem;
+    border-radius: .2rem;
+    border: 0px;
+    outline: 0;
+    transition: 500ms;
+}
+
+input[type=submit]:hover{
+    cursor: pointer;
+}
+
+:has(.navbar_logout)input[type=submit]:hover{
+    transform: translateY(-10px);
+}
+
+/* -------------- */
+
+nav{
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: white;
+    width: 100%;
+}
+
+nav .container_navContents{
+    max-width: 28rem;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    margin: 0 auto;
+    justify-content: center;
+    text-transform: capitalize;
+}
+
+input[value=logout]{
+    margin-top: 0rem;
+}
+
+nav a{
+    color: var(--primary);
+    font-weight: bold;
+}
+
+h1{
+    font-weight: bold;
+    font-size: 3rem;
+    margin-block: .5rem;
+}
+
+.btn_add_movie{
+    margin-bottom: 2rem;
+}
+
+#container_movies{
+    height: 100%;
+    overflow-y: scroll;
+    margin-bottom: 1rem;
+    display: flex;
+    max-width: 1200px;
+    gap: 2rem;
+    flex-wrap: wrap;
+    opacity: 0;
+    animation: show 500ms forwards;
+}
+
+.container_movie{
+    max-height: 300px;
+    max-width: 28rem;
+    background-color: var(--secondary);
+    border-radius: .6rem;
+    margin-block: .5rem;
+    padding: 1rem;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: show 1s 500ms forwards;
+}
+
+@keyframes show {
+    100%{
+        opacity: 1;
+        transform: translateY(0px);
+    }
+}
+
+
+.container_movie h2{
+    font-weight: bold;
+    margin-bottom: 1rem;
+    text-transform: capitalize;
+}
+
+.container_movie p{
+    font-size: 1.2rem;
+    margin-block: .4rem;
+}
+.container_movie span{
+    font-weight: bold;
+}
